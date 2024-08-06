@@ -1,9 +1,9 @@
-import NxWelcome from './nx-welcome';
+import {ListPage} from "../pages/ListPage";
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="frontend" />
+      <ListPage/>
     </div>
   );
 }
