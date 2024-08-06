@@ -3,6 +3,7 @@ import {List} from "./components/List";
 import {Filter} from "./components/Filter";
 import {getListData} from "../../api/list";
 import {ListContext} from "../../stores";
+import {EmptyState} from "./components/EmptyState";
 
 function ListPage() {
   const {actions: {setData}, list} = useContext(ListContext)
@@ -44,7 +45,7 @@ function ListPage() {
             {list.length ? (
               <List data={list}/>
             ) : (
-              <>Empty State</>
+              <EmptyState/>
             )}
           </div>
         </div>
