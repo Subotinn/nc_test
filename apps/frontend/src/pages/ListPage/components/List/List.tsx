@@ -20,7 +20,6 @@ const List = ({data}) => {
                      alt=""/>
                 <div className="min-w-0 flex-auto">
                   <p className="text-sm font-semibold leading-6 text-gray-900">{item.name}</p>
-                  {/*<p className="mt-1 truncate text-xs leading-5 text-gray-500">{item.email}</p>*/}
                 </div>
               </div>
               <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">

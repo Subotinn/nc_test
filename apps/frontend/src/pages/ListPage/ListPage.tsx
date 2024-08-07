@@ -4,11 +4,15 @@ import {Filter} from "./components/Filter";
 import {getListData} from "../../api/list";
 import {ListContext} from "../../stores";
 import {EmptyList} from "../../components/EmptyStates";
+import {Spinner} from "../../components/LoadingStates";
 
 const ListPage = () => {
   const {actions: {setData}, list} = useContext(ListContext)
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async ({search = '', category = 0} = {}) => {
+    setIsLoading(true);
+
     const data = await getListData({
       filters: {
         search,
@@ -21,6 +25,8 @@ const ListPage = () => {
     } else {
       setData([])
     }
+
+    setIsLoading(false);
 
     return [];
   }
@@ -42,11 +48,9 @@ const ListPage = () => {
             <Filter onSearch={fetchData}/>
           </div>
           <div className="mt-4">
-            {list.length ? (
-              <List data={list}/>
-            ) : (
-              <EmptyList/>
-            )}
+            {isLoading && <Spinner/>}
+            {(!isLoading && list.length) && (<List data={list}/>)}
+            {!isLoading && !list.length && (<EmptyList/>)}
           </div>
         </div>
       </main>
