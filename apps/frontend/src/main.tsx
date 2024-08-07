@@ -1,7 +1,7 @@
 import {StrictMode} from 'react';
 import * as ReactDOM from 'react-dom/client';
 
-import App from './app/app';
+import App from './pages/MainPage/MainPage';
 import {ListProvider} from "./stores";
 
 const root = ReactDOM.createRoot(

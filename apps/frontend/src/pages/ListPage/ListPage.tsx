@@ -3,9 +3,9 @@ import {List} from "./components/List";
 import {Filter} from "./components/Filter";
 import {getListData} from "../../api/list";
 import {ListContext} from "../../stores";
-import {EmptyState} from "./components/EmptyState";
+import {EmptyList} from "../../components/EmptyStates";
 
-function ListPage() {
+const ListPage = () => {
   const {actions: {setData}, list} = useContext(ListContext)
 
   const fetchData = async ({search = '', category = 0} = {}) => {
@@ -45,7 +45,7 @@ function ListPage() {
             {list.length ? (
               <List data={list}/>
             ) : (
-              <EmptyState/>
+              <EmptyList/>
             )}
           </div>
         </div>

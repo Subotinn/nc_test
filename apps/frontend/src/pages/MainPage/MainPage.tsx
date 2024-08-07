@@ -1,9 +1,9 @@
-import {ListPage} from "../pages/ListPage";
+import {ListPage} from "../ListPage";
 import {useContext} from "react";
-import {ListContext} from "../stores";
-import {DetailsPage} from "../pages/DetailsPage";
+import {ListContext} from "../../stores";
+import {DetailsPage} from "../DetailsPage";
 
-export function App() {
+const MainPage = () => {
   const {selectedId} = useContext(ListContext)
 
   return (
@@ -17,4 +17,4 @@ export function App() {
   );
 }
 
-export default App;
+export default MainPage;

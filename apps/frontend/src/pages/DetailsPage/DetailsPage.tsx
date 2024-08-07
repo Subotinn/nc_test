@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {ListContext} from "../../stores";
 
-function DetailsPage(props) {
+const DetailsPage = () => {
   const {actions: {closeDetails}, list, selectedId} = useContext(ListContext)
 
   const selectedItem = list.find(item => +item.id === +selectedId)
@@ -14,10 +14,23 @@ function DetailsPage(props) {
   return (
     <div className="min-h-full">
       <header className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Details Page</h1>
-          <a href="" onClick={handleList}>Go to list</a>
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900">Details Page</h1>
+          </div>
+          <div className="mt-5 flex lg:ml-4 lg:mt-0">
+            <span className="sm:ml-3">
+              <button
+                type="button"
+                className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={handleList}
+              >
+                Go back to list
+              </button>
+            </span>
+          </div>
         </div>
+
       </header>
       <main>
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
