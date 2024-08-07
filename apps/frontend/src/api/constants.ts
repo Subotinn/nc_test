@@ -1,1 +1,1 @@
-export const BE_URL = 'http://localhost:4200/';
+export const BE_URL = 'http://localhost:3333/bff';

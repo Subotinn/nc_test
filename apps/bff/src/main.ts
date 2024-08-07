@@ -9,12 +9,25 @@ import * as routes from './routes';
 import './mock/index';
 
 const app = express();
+const port = process.env.PORT || 3333;
 
 routes.register(app);
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use((_, res, next) => {
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  res.set(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, content-type, Authorization"
+  );
+  res.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  next();
+});
 
-const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });

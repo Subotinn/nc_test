@@ -13,8 +13,6 @@ export function App() {
       ) : (
         <ListPage/>
       )}
-
-
     </div>
   );
 }

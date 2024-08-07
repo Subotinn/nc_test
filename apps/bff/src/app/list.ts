@@ -1,15 +1,27 @@
 import axios from "axios";
 import {IListItem, IRawListResponse} from "../entities/list";
+import {formatSalary} from "../helpers/formatters";
 
 export async function getListData(filters) {
   let filteredItems = await axios.post("http://test.mock.api/api/list", filters)
     .then((response) => {
-      return (response.data as IRawListResponse).data.map((rawItem) => {
+      return (response.data as IRawListResponse).data.map(({
+                                                             id,
+                                                             name,
+                                                             email,
+                                                             avatar,
+                                                             category,
+                                                             salary,
+                                                             description
+                                                           }) => {
         return {
-          id: rawItem.id,
-          name: rawItem.name,
-          avatar: rawItem.avatar,
-          category: rawItem.category
+          id,
+          name,
+          email,
+          avatar,
+          category,
+          salary: formatSalary(salary),
+          description,
         } as IListItem;
       });
     }, (reason) => {

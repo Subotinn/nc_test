@@ -3,7 +3,7 @@ import {BE_URL} from "./constants";
 export const getListData = async ({filters}) => {
   try {
     const searchParams = new URLSearchParams(filters)
-    const data = await fetch(`${BE_URL}/items.json?${searchParams.toString()}`);
+    const data = await fetch(`${BE_URL}/list?${searchParams.toString()}`);
 
     if (data.ok) {
       return await data.json();
@@ -13,6 +13,4 @@ export const getListData = async ({filters}) => {
   } catch (e) {
     console.log(e)
   }
-
-  return [];
 };
